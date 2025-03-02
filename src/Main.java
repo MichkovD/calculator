@@ -4,9 +4,7 @@ import static java.lang.Character.*;
 
 class InvalidFormatException extends Exception {
 
-    InvalidFormatException() {
-
-    }
+    InvalidFormatException() {}
 
     InvalidFormatException(String message) {
         super(message);
@@ -95,7 +93,8 @@ public class Main {
         }
         num1 = num1.replaceAll("\\s", "");
         num2 = num2.replaceAll("\\s", "");
-        if (num1.length() > 1 && num1 != "10" || num1 == "0"  || num1.length() == 0){
+
+        if (num1.isEmpty() || (num1.length() > 1 && !(num1.toCharArray()[0] == '1' && num1.toCharArray()[1] == '0')) || num1.toCharArray()[0] == '0'){
             try {
                 throw new InvalidFormatException("первое число должно быть целым в диапазоне от 1 до 10");
             }
@@ -103,7 +102,7 @@ public class Main {
                 throw new InvalidFormatException("", e);
             }
         }
-        if (num2.length() > 1 && num2 != "10" || num2 == "0" || num2.length() == 0){
+        if (num2.isEmpty() || (num2.length() > 1 && !(num2.toCharArray()[0] == '1' && num2.toCharArray()[1] == '0')) || num2.toCharArray()[0] == '0'){
             try {
                 throw new InvalidFormatException("второе число должно быть целым в диапазоне от 1 до 10");
             }
